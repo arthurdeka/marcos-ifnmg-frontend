@@ -59,10 +59,10 @@
   </main>
 
   <script>
-    // Obtém o ID do usuário logado (certifique-se de definir essa informação no login)
+    // Obtém o ID do usuário logado (defina essa informação no login)
     let currentUserId = Number(localStorage.getItem('currentUserId'));
     if (!currentUserId) {
-      // Se não estiver definido, você pode definir um valor padrão para teste (exemplo: 1)
+      // Valor padrão para teste (exemplo: 1)
       currentUserId = 1;
     }
 
@@ -93,7 +93,6 @@
             <tr>
               <th>ID</th>
               <th>Username</th>
-              <th>Role</th>
               <th>Ações</th>
             </tr>
           </thead>
@@ -103,7 +102,6 @@
         html += `<tr>
           <td>${usuario.id}</td>
           <td>${usuario.username}</td>
-          <td>${usuario.role}</td>
           <td class="action-buttons">`;
         // Exibe o botão de deletar somente se não for o usuário logado
         if (usuario.id !== currentUserId) {

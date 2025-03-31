@@ -26,13 +26,6 @@
       <label for="username">Username</label>
       <input type="text" id="username" name="username" required>
 
-      <label for="role">Role</label>
-      <select id="role" name="role" required>
-        <option value="">Selecione</option>
-        <option value="admin">Admin</option>
-        <option value="normal">Normal</option>
-      </select>
-
       <label for="password">Password</label>
       <input type="password" id="password" name="password" required>
 
@@ -48,7 +41,6 @@
 
       const formData = {
         username: document.getElementById('username').value,
-        role: document.getElementById('role').value,
         password: document.getElementById('password').value
       };
 
