@@ -73,7 +73,7 @@
         // Busca os dados do cliente pelo ID
         try {
           const response = await fetch(
-            `https://marcos-unimontes-backend.vercel.app/clientes/${id}`
+            `https://marcos-ifnmg-backend.vercel.app/clientes/${id}`
           );
           if (!response.ok) {
             throw new Error("Erro ao buscar dados do cliente.");
@@ -107,7 +107,7 @@
 
           try {
             const response = await fetch(
-              `https://marcos-unimontes-backend.vercel.app/clientes/${id}`,
+              `https://marcos-ifnmg-backend.vercel.app/clientes/${id}`,
               {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },

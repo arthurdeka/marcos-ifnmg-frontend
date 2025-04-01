@@ -74,7 +74,7 @@
       async function fetchUsuarios() {
         try {
           const response = await fetch(
-            "https://marcos-unimontes-backend.vercel.app/users"
+            "https://marcos-ifnmg-backend.vercel.app/users"
           );
           if (!response.ok) {
             throw new Error("Erro ao carregar usuários");
@@ -130,7 +130,7 @@
         if (!confirm("Tem certeza que deseja excluir este usuário?")) return;
         try {
           const response = await fetch(
-            `https://marcos-unimontes-backend.vercel.app/users/${id}`,
+            `https://marcos-ifnmg-backend.vercel.app/users/${id}`,
             {
               method: "DELETE",
             }
