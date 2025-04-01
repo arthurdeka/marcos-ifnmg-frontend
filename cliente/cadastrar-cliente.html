@@ -68,8 +68,10 @@
         };
 
         try {
+          // Debug: Log dos valores coletados (corrigido)
+          console.log(Object.values(formData));
+
           // Envia os dados para o back-end via POST para /clientes
-          console.log(object.values(formData))
           const response = await fetch(
             "https://marcos-unimontes-backend.vercel.app/clientes",
             {

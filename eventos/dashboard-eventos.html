@@ -89,8 +89,12 @@
           const eventos = await response.json();
           console.log("Eventos retornados:", eventos); // Debug
 
-          // Obtém a data atual no formato "YYYY-MM-DD"
-          const today = new Date().toISOString().slice(0, 10);
+          // Obtém a data atual no formato "YYYY-MM-DD" com base no horário local
+          const hoje = new Date();
+          const ano = hoje.getFullYear();
+          const mes = ("0" + (hoje.getMonth() + 1)).slice(-2);
+          const dia = ("0" + hoje.getDate()).slice(-2);
+          const today = `${ano}-${mes}-${dia}`;
           console.log("Data de hoje:", today); // Debug
 
           // Filtra os eventos com base na data
@@ -119,39 +123,41 @@
           return;
         }
         let html = `
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nome do Evento</th>
-              <th>Cliente</th>
-              <th>Data</th>
-              <th>Local</th>
-              <th>Tipo</th>
-              <th>Duração (horas)</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-      `;
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome do Evento</th>
+                <th>Cliente</th>
+                <th>Data</th>
+                <th>Local</th>
+                <th>Tipo</th>
+                <th>Duração (horas)</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+        `;
         eventos.forEach((evento) => {
           html += `
-          <tr>
-            <td>${evento.id}</td>
-            <td>${evento.nome_evento}</td>
-            <td>${evento.nome_cliente || "-"}</td>
-            <td>${evento.data_evento}</td>
-            <td>${evento.local_evento}</td>
-            <td>${evento.tipo_evento}</td>
-            <td>${evento.horas_duracao || "-"}</td>
-            <td><button onclick="deleteEvento(${evento.id})">Excluir</button></td>
-          </tr>
-        `;
+            <tr>
+              <td>${evento.id}</td>
+              <td>${evento.nome_evento}</td>
+              <td>${evento.nome_cliente || "-"}</td>
+              <td>${evento.data_evento}</td>
+              <td>${evento.local_evento}</td>
+              <td>${evento.tipo_evento}</td>
+              <td>${evento.horas_duracao || "-"}</td>
+              <td><button onclick="deleteEvento(${
+                evento.id
+              })">Excluir</button></td>
+            </tr>
+          `;
         });
         html += `
-          </tbody>
-        </table>
-      `;
+            </tbody>
+          </table>
+        `;
         container.innerHTML = html;
       }
 
@@ -161,7 +167,7 @@
           const response = await fetch(
             `https://marcos-unimontes-backend.vercel.app/eventos/${id}`,
             {
-              method: "DELETE"
+              method: "DELETE",
             }
           );
           if (response.ok) {
